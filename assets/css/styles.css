@@ -284,7 +284,7 @@
       font-size: 11px;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--naranja);
+      color: var(--hueso);
       margin-bottom: 28px;
     }
     .hero__kicker::before {
@@ -305,9 +305,9 @@
       font-weight: 400;
       font-size: 0.26em;
       letter-spacing: 0.04em;
-      color: var(--naranja);
+      color: var(--hueso);
       margin-bottom: 0.08em;
-      opacity: 0.95;
+      opacity: 1;
     }
     .hero__tagline {
       font-family: var(--font-italic);
