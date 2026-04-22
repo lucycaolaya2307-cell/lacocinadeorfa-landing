@@ -1,0 +1,19 @@
+# =============================================================================
+# HTTP security headers — Netlify / Cloudflare Pages
+# -----------------------------------------------------------------------------
+# GitHub Pages ignora este archivo; si se migra a Netlify, CF Pages o un
+# reverse proxy, estas cabeceras se aplican al servir cada ruta.
+# Reflejan las mismas políticas declaradas via <meta http-equiv> en index.html,
+# pero como HTTP headers son más efectivas (algunas directivas como
+# frame-ancestors o X-Frame-Options solo funcionan como header real).
+# =============================================================================
+
+/*
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
