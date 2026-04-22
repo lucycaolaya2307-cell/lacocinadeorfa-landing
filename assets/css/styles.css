@@ -381,23 +381,15 @@
       background: var(--crema);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-size: 18px;
-      color: var(--terracota);
-      text-align: center;
-      line-height: 1.1;
-      padding: 10px;
+      overflow: hidden;
+      padding: 12px;
       box-shadow: 0 10px 30px -6px rgba(26, 8, 6, 0.3);
     }
-    .hero__visual-badge span {
-      display: block;
-      font-size: 10px;
-      font-family: var(--font-body);
-      font-weight: 300;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--olivo-oscuro);
-      margin-top: 4px;
+    .hero__visual-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform: scale(1.08);
     }
 
     .hero__scroll {
