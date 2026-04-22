@@ -11,9 +11,22 @@
      3. MENU FILTERING   Filtra .dish según la tab .menu__tab activa
      4. REVEAL ON SCROLL Añade .in a .reveal cuando entran en viewport
      5. YEAR             Inyecta el año actual en #year (footer)
+     6. ANTI-PHISHING    Advertencia en consola contra self-XSS
    ========================================================================== */
 (() => {
     'use strict';
+    // ---------- 0. ANTI-PHISHING CONSOLE WARNING ----------
+    // Muchos ataques de phishing piden a la víctima pegar código en la consola
+    // del navegador ("self-XSS"). Este aviso — patrón usado por Facebook,
+    // Google y otros — sirve de freno social ante ese vector.
+    try {
+        console.log('%c¡Alto!', 'color: #b03c1c; font-size: 48px; font-weight: 700; text-shadow: 2px 2px 0 #3b130e;');
+        console.log('%cEsta es una función del navegador pensada para desarrolladores. Si alguien te pidió copiar y pegar algo aquí, es muy probable que sea una estafa para tomar control de tu cuenta o información.', 'color: #3b130e; font-size: 14px; line-height: 1.5;');
+        console.log('%cSi no entiendes a fondo lo que haces aquí, cierra esta ventana.', 'color: #6b2410; font-size: 13px; font-style: italic;');
+    }
+    catch {
+        // Algunos entornos embebidos no exponen console — ignorar silenciosamente.
+    }
     // Helper tipado: falla ruidosamente si el nodo no existe.
     const byId = (id) => {
         const el = document.getElementById(id);

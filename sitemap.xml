@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  sitemap.xml — La Cocina de Orfa
+  Indica a los buscadores qué URLs son canónicas. Al ser una single-page,
+  solo hay una URL (anclas del mismo documento no se listan por separado).
+  Ajustar <loc> al dominio real cuando se despliegue en producción.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://lacocinadeorfa.com/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

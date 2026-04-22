@@ -6,6 +6,12 @@
   <meta name="description" content="La Cocina de Orfa — Sabores del Pacífico colombiano. De la raíz al corazón. Encocados, tapaos, arroz con coco, chontaduro, viche.">
   <meta name="theme-color" content="#b03c1c">
 
+  <!-- SEO / robots: permitir indexación a buscadores legítimos pero limitar
+       previews excesivos y traducciones automáticas. Los bots agresivos se
+       filtran vía robots.txt (AI scrapers y SEO spies bloqueados ahí). -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1, noarchive, notranslate">
+  <meta name="googlebot" content="index, follow, noarchive">
+
   <!-- ================= SECURITY HEADERS (OWASP Top 10 mitigations) =================
        Estas cabeceras se inyectan vía <meta http-equiv> porque el hosting es
        estático y no podemos configurar headers HTTP reales. Si en el futuro
