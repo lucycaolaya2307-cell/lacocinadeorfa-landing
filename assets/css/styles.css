@@ -284,7 +284,8 @@
       font-size: 11px;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--hueso);
+      color: var(--crema-profundo);
+      text-shadow: 0 2px 12px rgba(26, 8, 6, 0.28);
       margin-bottom: 28px;
     }
     .hero__kicker::before {
