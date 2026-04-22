@@ -135,10 +135,16 @@
     .nav.scrolled .nav__brand { color: var(--marron); }
     .nav__brand-logo {
       width: 44px; height: 44px;
-      object-fit: contain;
+      object-fit: cover;
+      object-position: center;
       flex-shrink: 0;
       border-radius: 50%;
+      overflow: hidden;
+      border: 1.5px solid rgba(245, 233, 208, 0.65);
+      box-shadow: 0 8px 20px rgba(26, 8, 6, 0.18);
+      background: var(--crema);
     }
+    .nav.scrolled .nav__brand-logo { border-color: rgba(59, 19, 14, 0.12); }
     .nav__brand-text { line-height: 1; letter-spacing: 0.04em; }
     .nav__brand-text span {
       display: block;
