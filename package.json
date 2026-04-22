@@ -1,0 +1,13 @@
+{
+  "name": "orfacocina-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page de La Cocina de Orfa — sitio estático.",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
