@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La Cocina de Orfa — Sabores del Pacífico colombiano. De la raiz al corazon. Encocados, tapaos, arroz con coco, chontaduro, viche.">
+  <meta name="theme-color" content="#b03c1c">
+  <title>La Cocina de Orfa — De la raiz al corazon</title>
+
+  <link rel="icon" type="image/png" href="./assets/orfa-perfil.png">
+
+  <style>
+    @font-face {
+      font-family: 'OrfaBrand';
+      src: local('Balivia Free'), local('Balivia Free Bold'), url('./assets/fonts/Balivia-Regular.ttf') format('truetype');
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'OrfaBrand';
+      src: local('Balivia Free'), local('Balivia Free Bold'), url('./assets/fonts/Balivia-Regular.ttf') format('truetype');
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'OrfaBrand';
+      src: local('Balivia Free'), local('Balivia Free Bold'), url('./assets/fonts/Balivia-Regular.ttf') format('truetype');
+      font-style: normal;
+      font-weight: 800;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'OrfaBody';
+      src: local('OrfaBody'), url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'OrfaBody';
+      src: local('OrfaBody'), url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'OrfaBody';
+      src: local('OrfaBody'), url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'OrfaBody';
+      src: local('OrfaBody'), url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'OrfaBody';
+      src: local('OrfaBodyItalic'), url('./assets/fonts/Montserrat-Italic.ttf') format('truetype');
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    /* ============ TOKENS ============ */
+    :root {
+      --terracota: #b03c1c;
+      --terracota-oscuro: #8a2f16;
+      --terracota-profundo: #6b2410;
+      --marron: #3b130e;
+      --marron-suave: #5a2218;
+      --olivo: #6e7b41;
+      --olivo-oscuro: #515c30;
+      --naranja: #eb7e2a;
+      --naranja-sombra: #c25f12;
+      --azul: #038acb;
+      --arena: #d9c5a2;
+      --arena-claro: #e8d8b8;
+      --crema: #f5e9d0;
+      --crema-profundo: #ebd9b5;
+      --hueso: #faf2e0;
+      --negro: #1a0806;
+
+      --font-display: 'OrfaBrand', Georgia, serif;
+      --font-brand: 'OrfaBrand', Georgia, serif;
+      --font-italic: 'OrfaBody', Georgia, serif;
+      --font-body: 'OrfaBody', 'Segoe UI', Arial, sans-serif;
+
+      --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* ============ RESET ============ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--marron);
+      background: var(--hueso);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    ::selection { background: var(--naranja); color: var(--marron); }
+
+    /* ============ UTILITIES ============ */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    @media (min-width: 768px) { .container { padding: 0 48px; } }
+
+    .display { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.01em; }
+    .mono { font-family: var(--font-body); }
+    .italic { font-family: var(--font-italic); font-style: italic; }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ============ PATTERN ============ */
+    .pattern-bg {
+      position: absolute; inset: 0; opacity: 0.08; pointer-events: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='%23faf2e0' opacity='0.9'><path d='M15 35 Q25 25 35 35 L30 45 Q25 50 20 45 Z'/><circle cx='75' cy='20' r='3'/><path d='M85 40 L90 35 L95 40 L93 45 L87 45 Z'/><path d='M20 75 Q28 68 36 75 Q32 82 28 82 Q24 82 20 75 Z'/><circle cx='95' cy='80' r='2'/><path d='M50 100 L55 95 L60 100 L58 105 L52 105 Z'/><path d='M100 100 Q105 95 110 100 Q108 105 105 105 Q102 105 100 100 Z'/><circle cx='45' cy='60' r='2.5'/><path d='M60 15 L63 10 L66 15 L64 20 L62 20 Z'/></g></svg>");
+      background-size: 140px 140px;
+    }
+    .pattern-dark .pattern-bg {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='%233b130e' opacity='0.9'><path d='M15 35 Q25 25 35 35 L30 45 Q25 50 20 45 Z'/><circle cx='75' cy='20' r='3'/><path d='M85 40 L90 35 L95 40 L93 45 L87 45 Z'/><path d='M20 75 Q28 68 36 75 Q32 82 28 82 Q24 82 20 75 Z'/><circle cx='95' cy='80' r='2'/><path d='M50 100 L55 95 L60 100 L58 105 L52 105 Z'/><path d='M100 100 Q105 95 110 100 Q108 105 105 105 Q102 105 100 100 Z'/><circle cx='45' cy='60' r='2.5'/><path d='M60 15 L63 10 L66 15 L64 20 L62 20 Z'/></g></svg>");
+    }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 0;
+      transition: all 0.4s var(--ease-smooth);
+    }
+    .nav.scrolled {
+      background: rgba(245, 233, 208, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 12px 0;
+      box-shadow: 0 1px 0 rgba(59, 19, 14, 0.08);
+    }
+    .nav__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px;
+    }
+    .nav__brand {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--hueso);
+      transition: color 0.3s;
+    }
+    .nav.scrolled .nav__brand { color: var(--marron); }
+    .nav__brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .nav__brand-text { line-height: 1; letter-spacing: 0.04em; }
+    .nav__brand-text span {
+      display: block;
+      font-size: 9px;
+      font-family: var(--font-body);
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      margin-top: 2px;
+      opacity: 0.85;
+    }
+
+    .nav__links {
+      display: none;
+      gap: 32px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: lowercase;
+    }
+    @media (min-width: 900px) { .nav__links { display: flex; } }
+    .nav__links a {
+      color: var(--hueso);
+      opacity: 0.9;
+      transition: all 0.25s;
+      position: relative;
+      padding: 6px 0;
+    }
+    .nav.scrolled .nav__links a { color: var(--marron); opacity: 0.75; }
+    .nav__links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px; background: currentColor; transform: scaleX(0);
+      transform-origin: right; transition: transform 0.3s var(--ease-smooth);
+    }
+    .nav__links a:hover { opacity: 1; }
+    .nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    .nav__cta {
+      display: none;
+      align-items: center; gap: 8px;
+      padding: 10px 18px;
+      background: var(--naranja);
+      color: var(--marron);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: lowercase;
+      border-radius: 999px;
+      transition: all 0.25s;
+    }
+    @media (min-width: 700px) { .nav__cta { display: inline-flex; } }
+    .nav__cta:hover { background: var(--hueso); transform: translateY(-1px); }
+
+    .nav__burger {
+      display: flex; flex-direction: column; gap: 5px;
+      padding: 8px;
+    }
+    @media (min-width: 900px) { .nav__burger { display: none; } }
+    .nav__burger span {
+      width: 22px; height: 1.5px; background: var(--hueso);
+      transition: all 0.3s;
+    }
+    .nav.scrolled .nav__burger span { background: var(--marron); }
+
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 99;
+      background: var(--terracota);
+      display: flex; align-items: center; justify-content: center;
+      transform: translateX(100%);
+      transition: transform 0.4s var(--ease-smooth);
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu__links {
+      display: flex; flex-direction: column; gap: 24px;
+      font-family: var(--font-display);
+      font-size: 36px;
+      text-align: center;
+      color: var(--hueso);
+    }
+    .mobile-menu__links a { transition: transform 0.2s; display: inline-block; }
+    .mobile-menu__links a:hover { transform: translateY(-2px); color: var(--naranja); }
+    .mobile-menu__close {
+      position: absolute; top: 24px; right: 24px;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--hueso); font-size: 28px;
+      font-family: var(--font-body);
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: var(--terracota);
+      color: var(--hueso);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+    }
+    .hero__sun {
+      position: absolute;
+      top: -120px; left: -60px;
+      width: 320px; height: 320px;
+      background: var(--naranja);
+      border-radius: 50%;
+      opacity: 0.92;
+    }
+    .hero__star {
+      position: absolute;
+      top: -20px; left: 30px;
+      width: 140px; height: 140px;
+      color: var(--negro);
+    }
+    @media (min-width: 768px) {
+      .hero__sun { width: 440px; height: 440px; top: -180px; left: -100px; }
+      .hero__star { width: 200px; height: 200px; top: 20px; left: 120px; }
+    }
+    .hero__waves {
+      position: absolute; bottom: 0; right: -10px;
+      width: 280px; height: 80px;
+      color: var(--olivo);
+      opacity: 0.9;
+    }
+    @media (min-width: 768px) {
+      .hero__waves { width: 420px; height: 120px; right: 40px; }
+    }
+
+    .hero__grid {
+      position: relative; z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .hero__grid { grid-template-columns: 1.1fr 0.9fr; gap: 64px; }
+    }
+
+    .hero__content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: riseIn 1s var(--ease-smooth) 0.2s forwards;
+    }
+    .hero__kicker {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: clamp(15px, 2.8vw, 22px);
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--hueso);
+      margin-bottom: 28px;
+      text-shadow: 0 1px 0 rgba(26, 8, 6, 0.35);
+      line-height: 1.2;
+    }
+    .hero__kicker::before {
+      content: ''; width: 28px; height: 1px; background: currentColor;
+    }
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 13vw, 164px);
+      line-height: 0.88;
+      letter-spacing: 0.01em;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--hueso);
+    }
+    .hero__title em {
+      display: block;
+      font-family: var(--font-brand);
+      font-style: normal;
+      font-weight: 800;
+      font-size: 0.48em;
+      letter-spacing: 0.02em;
+      color: var(--hueso);
+      margin-bottom: 0.08em;
+      opacity: 0.95;
+      text-shadow: 0 1px 0 rgba(26, 8, 6, 0.4);
+    }
+    .hero__tagline {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: clamp(20px, 3vw, 27px);
+      letter-spacing: 0.07em;
+      color: var(--arena);
+      margin-bottom: 32px;
+      max-width: 28ch;
+    }
+    .hero__description {
+      font-size: clamp(16px, 2.7vw, 22px);
+      line-height: 1.8;
+      max-width: 44ch;
+      color: var(--crema);
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 16px; }
+    .btn-primary, .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 28px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      border-radius: 999px;
+      transition: all 0.3s var(--ease-spring);
+    }
+    .btn-primary {
+      background: var(--naranja);
+      color: var(--marron);
+      font-weight: 500;
+    }
+    .btn-primary:hover {
+      background: var(--hueso);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26, 8, 6, 0.2);
+    }
+    .btn-ghost {
+      color: var(--hueso);
+      border: 1px solid rgba(250, 242, 224, 0.35);
+    }
+    .btn-ghost:hover {
+      border-color: var(--hueso);
+      background: rgba(250, 242, 224, 0.08);
+    }
+
+    .hero__visual {
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: riseIn 1s var(--ease-smooth) 0.5s forwards;
+    }
+    .hero__visual-frame {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 50% 50% 46% 46% / 52% 52% 48% 48%;
+      overflow: hidden;
+      background: var(--marron);
+      box-shadow: 0 30px 80px -20px rgba(26, 8, 6, 0.5);
+    }
+    .hero__visual-frame img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .hero__visual-badge {
+      position: absolute;
+      bottom: 14px; left: 14px;
+      width: 92px; height: 92px;
+      background: transparent;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 18px;
+      gap: 0;
+      flex-direction: column;
+      color: var(--terracota);
+      text-align: center;
+      line-height: 1.1;
+      padding: 0;
+      box-shadow: none;
+    }
+    .hero__visual-badge img {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      object-fit: contain;
+      display: block;
+    }
+    .hero__visual-badge span {
+      display: none;
+      font-size: 9px;
+      font-family: var(--font-body);
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--olivo-oscuro);
+      margin-top: 4px;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--arena);
+      opacity: 0.7;
+      z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .hero__scroll::after {
+      content: ''; width: 1px; height: 28px; background: currentColor;
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(0.3); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+    }
+    @keyframes riseIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============ SECCIÓN TÍTULOS ============ */
+    .section-kicker {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terracota);
+      margin-bottom: 20px;
+    }
+    .section-kicker::before {
+      content: ''; width: 32px; height: 1px; background: currentColor;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 7vw, 88px);
+      line-height: 0.92;
+      color: var(--marron);
+      letter-spacing: 0.01em;
+      margin-bottom: 32px;
+    }
+    .section-title em {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--terracota);
+    }
+
+    /* ============ SOBRE ORFA ============ */
+    .orfa {
+      padding: 120px 0;
+      background: var(--crema);
+      position: relative;
+      overflow: hidden;
+    }
+    .orfa__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .orfa__grid { grid-template-columns: 0.9fr 1.1fr; gap: 80px; }
+    }
+    .orfa__visual {
+      position: relative;
+    }
+    .orfa__photo {
+      aspect-ratio: 3 / 4;
+      background: var(--arena);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .orfa__photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.8s var(--ease-smooth);
+    }
+    .orfa__photo:hover img { transform: scale(1.04); }
+    .orfa__photo-stamp {
+      position: absolute;
+      bottom: 20px; right: 20px;
+      background: var(--terracota);
+      color: var(--hueso);
+      padding: 10px 16px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+    .orfa__decor {
+      position: absolute;
+      top: -30px; left: -40px;
+      width: 100px; height: 100px;
+      color: var(--naranja);
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    .orfa__content p {
+      font-size: 15px;
+      line-height: 1.85;
+      margin-bottom: 20px;
+      color: var(--marron-suave);
+      max-width: 56ch;
+    }
+    .orfa__content p:first-of-type {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--terracota);
+      border-left: 2px solid var(--naranja);
+      padding-left: 20px;
+      margin-left: 4px;
+    }
+    .orfa__signature {
+      margin-top: 32px;
+      font-family: var(--font-display);
+      font-size: 40px;
+      color: var(--terracota);
+      font-style: italic;
+    }
+    .orfa__signature + span {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--olivo-oscuro);
+      margin-top: 4px;
+    }
+
+    /* ============ DIVIDER OLAS ============ */
+    .wave-divider {
+      position: relative;
+      height: 80px;
+      color: var(--olivo);
+      display: block;
+      line-height: 0;
+    }
+    .wave-divider svg { width: 100%; height: 100%; }
+
+    /* ============ ESPECIALIDAD (banner) ============ */
+    .especialidad {
+      position: relative;
+      background: var(--marron);
+      color: var(--hueso);
+      padding: 100px 0;
+      overflow: hidden;
+    }
+    .especialidad__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative; z-index: 2;
+    }
+    @media (min-width: 900px) {
+      .especialidad__grid { grid-template-columns: 1.1fr 0.9fr; gap: 72px; }
+    }
+    .especialidad__title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6.5vw, 78px);
+      line-height: 0.95;
+      color: var(--crema);
+      margin-bottom: 24px;
+    }
+    .especialidad__title em {
+      font-family: var(--font-italic);
+      font-style: italic;
+      color: var(--naranja);
+    }
+    .especialidad__text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--arena);
+      max-width: 54ch;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    .especialidad__highlights {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .especialidad__highlight {
+      padding: 20px 0;
+      border-top: 1px solid rgba(217, 197, 162, 0.25);
+    }
+    .especialidad__highlight strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--naranja);
+      margin-bottom: 4px;
+      font-weight: 400;
+    }
+    .especialidad__highlight span {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--arena);
+      font-weight: 300;
+    }
+    .especialidad__photo {
+      aspect-ratio: 4 / 5;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .especialidad__photo img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* ============ MENÚ ============ */
+    .menu {
+      padding: 120px 0 100px;
+      background: var(--hueso);
+      position: relative;
+    }
+    .menu__header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 64px;
+    }
+    .menu__header .section-kicker { justify-content: center; }
+    .menu__header .section-kicker::before,
+    .menu__header .section-kicker::after {
+      content: ''; width: 32px; height: 1px; background: currentColor;
+    }
+    .menu__intro {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--marron-suave);
+      line-height: 1.6;
+    }
+
+    .menu__tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 56px;
+      padding: 0 8px;
+    }
+    .menu__tab {
+      padding: 10px 20px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--marron-suave);
+      background: transparent;
+      border: 1px solid rgba(59, 19, 14, 0.15);
+      border-radius: 999px;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+    .menu__tab:hover {
+      border-color: var(--terracota);
+      color: var(--terracota);
+    }
+    .menu__tab.active {
+      background: var(--terracota);
+      border-color: var(--terracota);
+      color: var(--hueso);
+    }
+
+    .menu__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    @media (min-width: 600px) { .menu__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1000px) { .menu__grid { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
+
+    .dish {
+      background: var(--crema);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s;
+      border: 1px solid rgba(59, 19, 14, 0.05);
+    }
+    .dish:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -12px rgba(59, 19, 14, 0.18);
+    }
+    .dish[hidden] { display: none; }
+    .dish__photo {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--arena);
+      position: relative;
+    }
+    .dish__photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.8s var(--ease-smooth);
+    }
+    .dish:hover .dish__photo img { transform: scale(1.06); }
+    .dish__tag {
+      position: absolute;
+      top: 14px; left: 14px;
+      background: var(--hueso);
+      color: var(--marron);
+      padding: 5px 10px;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+    .dish__tag--especial { background: var(--naranja); color: var(--marron); }
+    .dish__tag--finde { background: var(--azul); color: var(--hueso); }
+
+    .dish__body {
+      padding: 22px 22px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .dish__name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--marron);
+      line-height: 1.05;
+      margin-bottom: 10px;
+      letter-spacing: 0.01em;
+    }
+    .dish__desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--marron-suave);
+      margin-bottom: 20px;
+      flex: 1;
+      font-weight: 300;
+    }
+    .dish__foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(59, 19, 14, 0.15);
+    }
+    .dish__price {
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--terracota);
+      letter-spacing: 0.02em;
+    }
+    .dish__price small {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      color: var(--olivo-oscuro);
+      font-weight: 300;
+      margin-left: 4px;
+      text-transform: uppercase;
+    }
+    .dish__order {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      background: var(--olivo);
+      color: var(--hueso);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      transition: all 0.25s;
+      font-weight: 500;
+    }
+    .dish__order:hover {
+      background: var(--olivo-oscuro);
+      transform: translateX(2px);
+    }
+    .dish__order svg { width: 12px; height: 12px; }
+
+    /* ============ RAÍCES ============ */
+    .raices {
+      padding: 140px 0;
+      background: var(--olivo-oscuro);
+      color: var(--hueso);
+      position: relative;
+      overflow: hidden;
+    }
+    .raices__header { text-align: center; margin-bottom: 72px; position: relative; z-index: 2; }
+    .raices__header .section-kicker { color: var(--naranja); justify-content: center; }
+    .raices__header .section-kicker::before,
+    .raices__header .section-kicker::after {
+      content: ''; width: 32px; height: 1px; background: currentColor;
+    }
+    .raices__title {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 7vw, 92px);
+      color: var(--crema);
+      line-height: 0.92;
+      max-width: 16ch;
+      margin: 0 auto 24px;
+    }
+    .raices__title em {
+      font-family: var(--font-italic);
+      font-style: italic;
+      color: var(--naranja);
+    }
+    .raices__sub {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 17px;
+      max-width: 52ch;
+      margin: 0 auto;
+      color: var(--arena);
+      line-height: 1.6;
+    }
+
+    .raices__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      position: relative;
+      z-index: 2;
+    }
+    .raiz {
+      text-align: center;
+    }
+    .raiz__icon {
+      width: 80px; height: 80px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: rgba(250, 242, 224, 0.06);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--naranja);
+      border: 1px solid rgba(235, 126, 42, 0.3);
+    }
+    .raiz__icon svg { width: 42px; height: 42px; }
+    .raiz__name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--crema);
+      margin-bottom: 8px;
+    }
+    .raiz__desc {
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--arena);
+      font-weight: 300;
+      max-width: 22ch;
+      margin: 0 auto;
+    }
+
+    /* ============ GALERÍA ============ */
+    .galeria {
+      padding: 120px 0;
+      background: var(--hueso);
+    }
+    .galeria__header { text-align: center; margin-bottom: 56px; }
+    .galeria__header .section-kicker { justify-content: center; }
+    .galeria__header .section-kicker::before,
+    .galeria__header .section-kicker::after {
+      content: ''; width: 32px; height: 1px; background: currentColor;
+    }
+    .galeria__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 140px;
+      gap: 16px;
+    }
+    @media (min-width: 700px) {
+      .galeria__grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 180px;
+        gap: 20px;
+      }
+    }
+    @media (min-width: 1100px) {
+      .galeria__grid { grid-auto-rows: 220px; }
+    }
+    .galeria__item {
+      overflow: hidden;
+      border-radius: 6px;
+      background: var(--arena);
+      position: relative;
+    }
+    .galeria__item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.8s var(--ease-smooth);
+    }
+    .galeria__item:hover img { transform: scale(1.08); }
+    .galeria__item--tall { grid-row: span 2; }
+    .galeria__item--wide { grid-column: span 2; }
+
+    /* ============ VISITA ============ */
+    .visita {
+      padding: 120px 0;
+      background: var(--terracota);
+      color: var(--hueso);
+      position: relative;
+      overflow: hidden;
+    }
+    .visita__sun {
+      position: absolute;
+      bottom: -200px; right: -120px;
+      width: 500px; height: 500px;
+      background: var(--naranja);
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+    .visita__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      position: relative; z-index: 2;
+    }
+    @media (min-width: 900px) {
+      .visita__grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+    }
+    .visita__title {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 7vw, 88px);
+      line-height: 0.92;
+      color: var(--hueso);
+      margin-bottom: 24px;
+    }
+    .visita__title em {
+      font-family: var(--font-italic);
+      font-style: italic;
+      color: var(--naranja);
+    }
+    .visita__lead {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--arena);
+      max-width: 48ch;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+    .visita__info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .visita__row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(250, 242, 224, 0.15);
+    }
+    .visita__row:last-of-type { border-bottom: none; }
+    .visita__row-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(250, 242, 224, 0.1);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--naranja);
+    }
+    .visita__row-icon svg { width: 20px; height: 20px; }
+    .visita__row-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--arena);
+      margin-bottom: 4px;
+      font-weight: 300;
+    }
+    .visita__row-value {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--hueso);
+      line-height: 1.3;
+    }
+    .visita__row-value a { transition: color 0.2s; }
+    .visita__row-value a:hover { color: var(--naranja); }
+
+    .visita__cta {
+      margin-top: 40px;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 18px 32px;
+      background: var(--naranja);
+      color: var(--marron);
+      font-family: var(--font-body);
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: lowercase;
+      font-weight: 500;
+      border-radius: 999px;
+      transition: all 0.3s var(--ease-spring);
+    }
+    .visita__cta:hover {
+      background: var(--hueso);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(26, 8, 6, 0.28);
+    }
+
+    .visita__aside {
+      position: relative;
+    }
+    .visita__aside-photo {
+      aspect-ratio: 4 / 5;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .visita__aside-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .visita__aside-note {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: var(--marron);
+      border-radius: 6px;
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--arena);
+      border-left: 3px solid var(--naranja);
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      background: var(--marron);
+      color: var(--arena);
+      padding: 64px 0 32px;
+      font-size: 13px;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      margin-bottom: 56px;
+    }
+    @media (min-width: 700px) {
+      .footer__grid { grid-template-columns: 1.4fr 1fr 1fr; }
+    }
+    .footer__brand {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--crema);
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .footer__brand em {
+      font-family: var(--font-italic);
+      font-style: italic;
+      color: var(--naranja);
+      display: block;
+      font-size: 18px;
+      margin-top: 6px;
+    }
+    .footer__text {
+      font-size: 12px;
+      line-height: 1.8;
+      opacity: 0.75;
+      max-width: 42ch;
+      font-weight: 300;
+    }
+    .footer__heading {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--naranja);
+      margin-bottom: 16px;
+    }
+    .footer__list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer__list a { transition: color 0.2s; opacity: 0.8; font-size: 12px; }
+    .footer__list a:hover { color: var(--hueso); opacity: 1; }
+
+    .footer__social { display: flex; gap: 12px; margin-top: 8px; }
+    .footer__social a {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(217, 197, 162, 0.25);
+      transition: all 0.25s;
+    }
+    .footer__social a:hover {
+      background: var(--naranja);
+      border-color: var(--naranja);
+      color: var(--marron);
+      transform: translateY(-2px);
+    }
+    .footer__social svg { width: 16px; height: 16px; }
+
+    .footer__bottom {
+      padding-top: 32px;
+      border-top: 1px solid rgba(217, 197, 162, 0.15);
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* ============ WHATSAPP FLOTANTE ============ */
+    .wa-float {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      z-index: 90;
+      width: 60px; height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+      transition: transform 0.3s var(--ease-spring);
+    }
+    .wa-float:hover { transform: scale(1.08); }
+    .wa-float svg { width: 30px; height: 30px; }
+    .wa-float::before {
+      content: ''; position: absolute; inset: -4px;
+      border: 2px solid #25D366;
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: waPulse 2.4s ease-out infinite;
+    }
+    @keyframes waPulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    /* ============ REVEAL ON SCROLL ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav" aria-label="Navegación principal">
+  <div class="container nav__inner">
+    <a href="#" class="nav__brand" aria-label="Inicio - La Cocina de Orfa">
+      <img class="nav__brand-img" src="./assets/orfa-hero-icon.png" alt="Icono La Cocina de Orfa" loading="eager">
+      <span class="nav__brand-text">La Cocina de Orfa<span>De la raiz al corazon</span></span>
+    </a>
+    <div class="nav__links">
+      <a href="#orfa">quiénes somos</a>
+      <a href="#menu">menú</a>
+      <a href="#raices">raíces</a>
+      <a href="#galeria">galería</a>
+      <a href="#visita">visítanos</a>
+    </div>
+    <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20me%20interesa%20hacer%20un%20pedido" class="nav__cta" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+      whatsapp
+    </a>
+    <button class="nav__burger" aria-label="Abrir menú" id="burger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mobile-menu__close" aria-label="Cerrar menú" id="closeMenu">×</button>
+  <div class="mobile-menu__links">
+    <a href="#orfa" data-close>quiénes somos</a>
+    <a href="#menu" data-close>menú</a>
+    <a href="#raices" data-close>raíces</a>
+    <a href="#galeria" data-close>galería</a>
+    <a href="#visita" data-close>visítanos</a>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero pattern-dark">
+  <div class="pattern-bg"></div>
+
+  <!-- Sol naranja -->
+  <div class="hero__sun" aria-hidden="true"></div>
+
+  <!-- Estrella negra (brand element) -->
+  <svg class="hero__star" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+    <path d="M50 5 L58 35 L88 30 L64 50 L88 70 L58 65 L50 95 L42 65 L12 70 L36 50 L12 30 L42 35 Z"/>
+  </svg>
+
+  <!-- Olas verdes en base -->
+  <svg class="hero__waves" viewBox="0 0 400 120" fill="none" aria-hidden="true">
+    <path d="M0 60 Q50 20 100 60 Q150 100 200 60 Q250 20 300 60 Q350 100 400 60" stroke="currentColor" stroke-width="14" stroke-linecap="round"/>
+    <path d="M0 90 Q50 50 100 90 Q150 130 200 90 Q250 50 300 90 Q350 130 400 90" stroke="currentColor" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+  </svg>
+
+  <div class="container">
+    <div class="hero__grid">
+      <div class="hero__content">
+        <div class="hero__kicker">Cocina del pacífico colombiano</div>
+        <h1 class="hero__title">
+          <em>La</em>
+          COCINA<br>DE ORFA
+        </h1>
+        <p class="hero__tagline">De la raiz al corazon — fogón lento, mano afro, mesa abierta.</p>
+        <p class="hero__description">
+          Encocados, tapaos, pescado en hoja de plátano, arroz con coco y viche. Cocina afro-pacífica
+          hecha a mano con los ingredientes y las recetas que heredamos del manglar.
+        </p>
+        <div class="hero__actions">
+          <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" class="btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            pedir por whatsapp
+          </a>
+          <a href="#menu" class="btn-ghost">ver el menú ↓</a>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero__visual-frame">
+          <img src="./assets/ambiente-04.jpg" alt="Plato del Pacífico colombiano sobre hoja de plátano" loading="eager">
+        </div>
+        <div class="hero__visual-badge">
+          <img src="./assets/orfa-hero-icon.png" alt="Icono de La Cocina de Orfa">
+          <span>Chocó<br>Pacífico colombiano</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__scroll">desliza</div>
+</header>
+
+<!-- ============ SOBRE ORFA ============ -->
+<section class="orfa" id="orfa">
+  <div class="container">
+    <div class="orfa__grid">
+      <div class="orfa__visual reveal">
+        <svg class="orfa__decor" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+          <path d="M50 5 L58 35 L88 30 L64 50 L88 70 L58 65 L50 95 L42 65 L12 70 L36 50 L12 30 L42 35 Z"/>
+        </svg>
+        <div class="orfa__photo">
+          <img src="./assets/orfa-perfil.png" alt="Isotipo de La Cocina de Orfa — cuenco sostenido por una mano" loading="lazy">
+          <div class="orfa__photo-stamp">Desde el Pacífico</div>
+        </div>
+      </div>
+      <div class="orfa__content reveal">
+        <div class="section-kicker">Quiénes somos</div>
+        <h2 class="section-title">La receta <em>de la casa</em>, contada despacio.</h2>
+        <p>
+          Somos <strong>Orfa</strong>, hija del Pacífico. Aquí el fogón no corre: se escucha, se huele, se espera.
+        </p>
+        <p>
+          Nuestra cocina nace en las orillas del manglar y viene por herencia: de la abuela que cocinaba con leña, de las
+          manos afro que amasaron generaciones de sabor, de la memoria de un territorio donde el coco, el pescado y la
+          hierba de azotea cuentan quiénes somos.
+        </p>
+        <p>
+          En La Cocina de Orfa no te vendemos platos, te abrimos una mesa. Cada encocado, cada tapao, cada hoja de
+          plátano guarda una historia de raíz, de familia, de tierra bañada por dos mares.
+        </p>
+        <div class="orfa__signature">Orfa</div>
+        <span>Cocinera y corazón de la casa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Divider -->
+<div class="wave-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="currentColor">
+    <path d="M0 40 Q120 0 240 40 T480 40 T720 40 T960 40 T1200 40 T1440 40 L1440 80 L0 80 Z"/>
+  </svg>
+</div>
+
+<!-- ============ ESPECIALIDAD ============ -->
+<section class="especialidad pattern-dark">
+  <div class="pattern-bg"></div>
+  <div class="container">
+    <div class="especialidad__grid">
+      <div class="reveal">
+        <div class="section-kicker" style="color: var(--naranja);">Nuestra especialidad</div>
+        <h2 class="especialidad__title">
+          <em>Pescado</em> en<br>hoja de plátano
+        </h2>
+        <p class="especialidad__text">
+          Es nuestro plato insignia. Pargo o sierra envuelto en hoja de plátano verde, marinado con
+          hierbas del Pacífico y cocido al vapor sobre su propio aroma. La hoja se abre en la mesa y
+          libera todo el sabor del manglar.
+        </p>
+        <p class="especialidad__text">
+          No hay atajos. Cada hoja se pasa por la llama, cada pescado se limpia a mano, cada envuelto
+          se amarra como se hacía en las casas de Quibdó y Buenaventura hace cien años.
+        </p>
+        <div class="especialidad__highlights">
+          <div class="especialidad__highlight">
+            <strong>3 h</strong>
+            <span>de preparación</span>
+          </div>
+          <div class="especialidad__highlight">
+            <strong>100%</strong>
+            <span>ingredientes del pacífico</span>
+          </div>
+          <div class="especialidad__highlight">
+            <strong>A mano</strong>
+            <span>como la abuela</span>
+          </div>
+          <div class="especialidad__highlight">
+            <strong>Todos los días</strong>
+            <span>menos los lunes</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="especialidad__photo">
+          <img src="./assets/ambiente-03.jpg" alt="Pescado envuelto en hoja de plátano — especialidad de la casa" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENÚ ============ -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="menu__header reveal">
+      <div class="section-kicker">Nuestra mesa</div>
+      <h2 class="section-title">El <em>menú</em> de la casa</h2>
+      <p class="menu__intro">
+        Cada plato tiene su receta, su historia y sus manos. Escoge lo que te llama y pídelo
+        directo por WhatsApp — cocinamos al momento.
+      </p>
+    </div>
+
+    <div class="menu__tabs" role="tablist" aria-label="Categorías del menú">
+      <button class="menu__tab active" data-cat="todos" role="tab" aria-selected="true">todos</button>
+      <button class="menu__tab" data-cat="fritos" role="tab">fritos</button>
+      <button class="menu__tab" data-cat="caldos" role="tab">caldos y sopas</button>
+      <button class="menu__tab" data-cat="pasabocas" role="tab">pasabocas</button>
+      <button class="menu__tab" data-cat="postres" role="tab">postres</button>
+      <button class="menu__tab" data-cat="cocteles" role="tab">cocteles con viche</button>
+      <button class="menu__tab" data-cat="bebidas" role="tab">bebidas</button>
+    </div>
+
+    <div class="menu__grid" id="menuGrid">
+
+      <!-- FRITOS -->
+      <article class="dish" data-cat="fritos">
+        <div class="dish__photo">
+          <img src="./assets/plato-01.jpeg" alt="Camarones apanados con arroz con coco y patacones" loading="lazy">
+          <span class="dish__tag dish__tag--especial">Especial</span>
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Camarones apanados</h3>
+          <p class="dish__desc">Acompañados de arroz con coco, patacones, ensalada y salsa de la casa.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$45.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20los%20Camarones%20apanados" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="fritos">
+        <div class="dish__photo">
+          <img src="./assets/plato-02.jpeg" alt="Pescado frito entero con arroz con coco" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Pescado frito</h3>
+          <p class="dish__desc">Gualajo, pelada o pargo entero frito, acompañado de arroz con coco, patacones y encebollado.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$55.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20el%20Pescado%20frito" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CALDOS Y SOPAS -->
+      <article class="dish" data-cat="caldos">
+        <div class="dish__photo">
+          <img src="./assets/plato-03.jpeg" alt="Tapao — caldo aromatizado con hierbas de azotea" loading="lazy">
+          <span class="dish__tag">Tradición</span>
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Tapao</h3>
+          <p class="dish__desc">Caldo aromatizado con hierbas de azotea, pescado (200gr), plátano o banano verde. Acompañado de arroz.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$37.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20el%20Tapao" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="caldos">
+        <div class="dish__photo">
+          <img src="./assets/plato-04.jpeg" alt="Crema de mariscos con leche de coco" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Crema de mariscos</h3>
+          <p class="dish__desc">Crema a base de leche de coco y plátano con calamares, pulpo, camarones y jaiba. Arroz y tostadas de plátano.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$48.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20la%20Crema%20de%20mariscos" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="caldos">
+        <div class="dish__photo">
+          <img src="./assets/plato-05.jpeg" alt="Sopa de queso costeño chocoana" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Sopa de queso costeño</h3>
+          <p class="dish__desc">De tradición chocoana. Elaborada a base de leche de coco y refrito del Pacífico. Acompañada de arroz y patacones.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$28.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20la%20Sopa%20de%20queso%20coste%C3%B1o" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="caldos">
+        <div class="dish__photo">
+          <img src="./assets/plato-06.jpeg" alt="Sancocho de posta de bagre — solo fines de semana" loading="lazy">
+          <span class="dish__tag dish__tag--finde">Solo finde</span>
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Sancocho de posta de bagre</h3>
+          <p class="dish__desc">Solo fines de semana. Acompañado de arroz con coco, patacón y ensalada.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$32.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20el%20Sancocho%20de%20bagre" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PASABOCAS -->
+      <article class="dish" data-cat="pasabocas">
+        <div class="dish__photo">
+          <img src="./assets/plato-07.jpeg" alt="Empanadas de masa de plátano rellenas" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Empanadas de masa de plátano</h3>
+          <p class="dish__desc">Arma tu combo con rellenos a elegir: camarón, calamar, atún, jaiba, piangua, queso costeño o vegetales.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$15.000<small>×3</small></div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20Empanadas%20de%20pl%C3%A1tano" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="pasabocas">
+        <div class="dish__photo">
+          <img src="./assets/plato-08.jpeg" alt="Bolitas de papachina rellenas" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Bolitas de papachina</h3>
+          <p class="dish__desc">Rellenas de camarón, calamar, atún, queso, pescado ahumado o vegetales. Escoge tu relleno.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$5.000<small>c/u</small></div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20Bolitas%20de%20papachina" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="pasabocas">
+        <div class="dish__photo">
+          <img src="./assets/ambiente-01.jpg" alt="Chips de banano verde con suero costeño" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Chips de banano verde</h3>
+          <p class="dish__desc">Moneditas de banano verde fritas acompañadas de suero costeño y hogao.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$10.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20Chips%20de%20banano%20verde" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="pasabocas">
+        <div class="dish__photo">
+          <img src="./assets/plato-09.jpeg" alt="Chips de papachina con hogao" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Chips de papachina</h3>
+          <p class="dish__desc">Tajadas de papachina fritas acompañadas de suero costeño y hogao.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$15.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20Chips%20de%20papachina" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- POSTRES -->
+      <article class="dish" data-cat="postres">
+        <div class="dish__photo">
+          <img src="./assets/ambiente-06.jpg" alt="Flan de chontaduro — fruto de palma" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Flan de chontaduro</h3>
+          <p class="dish__desc">Postre de textura cremosa elaborado a base de chontaduro, fruto de palma del Pacífico.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$7.500</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20Flan%20de%20chontaduro" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="postres">
+        <div class="dish__photo">
+          <img src="./assets/galeria-01.jpeg" alt="Pasabocas de coco — cocada asada" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Pasabocas de coco</h3>
+          <p class="dish__desc">También conocido como "cocada asada": suave galleta horneada elaborada a partir de coco.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$2.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20Pasabocas%20de%20coco" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- COCTELES CON VICHE -->
+      <article class="dish" data-cat="cocteles">
+        <div class="dish__photo">
+          <img src="./assets/ambiente-02.jpg" alt="Mojito con viche del Pacífico" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Mojito con viche</h3>
+          <p class="dish__desc">El clásico mojito reinventado con viche, el destilado ancestral del Pacífico colombiano.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$30.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20un%20Mojito%20con%20viche" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="cocteles">
+        <div class="dish__photo">
+          <img src="./assets/ambiente-05.jpg" alt="Daikiri de arazá con viche" loading="lazy">
+          <span class="dish__tag dish__tag--especial">De la casa</span>
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Daikiri de arazá</h3>
+          <p class="dish__desc">Daikiri con arazá — fruta amazónica de aroma intenso — y un toque de viche. Dulce, ácido, vivo.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$35.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20un%20Daikiri%20de%20araz%C3%A1" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="cocteles">
+        <div class="dish__photo">
+          <img src="./assets/plato-camarones.jpeg" alt="Coctel de borojó con viche" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Coctel de borojó</h3>
+          <p class="dish__desc">El borojó, fruta emblema del Chocó, mezclado con viche. Un trago con raíz, espeso y con carácter.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$35.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20un%20Coctel%20de%20boroj%C3%B3" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- BEBIDAS -->
+      <article class="dish" data-cat="bebidas">
+        <div class="dish__photo">
+          <img src="./assets/destacada-02.png" alt="Agua natural" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Agua — natural o con gas</h3>
+          <p class="dish__desc">Agua embotellada, natural o con gas. Para acompañar o refrescar entre plato y plato.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$6.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20Agua" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="bebidas">
+        <div class="dish__photo">
+          <img src="./assets/destacada-03.png" alt="Tinto — café americano" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Tinto (café americano)</h3>
+          <p class="dish__desc">Café colombiano recién pasado. Cargado, caliente, como debe ser.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$5.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20un%20Tinto" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="dish" data-cat="bebidas">
+        <div class="dish__photo">
+          <img src="./assets/destacada-04.png" alt="Aromática herbal" loading="lazy">
+        </div>
+        <div class="dish__body">
+          <h3 class="dish__name">Aromática herbal</h3>
+          <p class="dish__desc">Infusión de hierbas frescas del Pacífico. Calmante, caliente, para terminar la mesa despacio.</p>
+          <div class="dish__foot">
+            <div class="dish__price">$5.000</div>
+            <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20pedir%20una%20Arom%C3%A1tica" target="_blank" rel="noopener" class="dish__order">
+              pedir
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ RAÍCES DEL PACÍFICO ============ -->
+<section class="raices pattern-dark" id="raices">
+  <div class="pattern-bg"></div>
+  <div class="container">
+    <div class="raices__header reveal">
+      <div class="section-kicker">Nuestras raíces</div>
+      <h2 class="raices__title">Lo que nos hace <em>pacífico</em>.</h2>
+      <p class="raices__sub">
+        Detrás de cada plato hay un mapa: ríos, manglar, mercado del domingo, fogón de leña, manos que
+        se pasan la receta sin escribirla. Estos son los ingredientes y las tradiciones que sostienen
+        nuestra cocina.
+      </p>
+    </div>
+    <div class="raices__grid">
+      <div class="raiz reveal">
+        <div class="raiz__icon">
+          <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8 18 Q21 10 34 18 L30 32 Q21 36 12 32 Z" fill="currentColor" opacity="0.2"/>
+            <path d="M8 18 Q21 10 34 18 L30 32 Q21 36 12 32 Z"/>
+            <path d="M21 18 L21 8 M18 12 L24 8 M16 10 L22 6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="raiz__name">Leche de coco</div>
+        <p class="raiz__desc">Base de casi todo lo nuestro: encocados, cremas, arroz. Se raspa el coco a mano.</p>
+      </div>
+      <div class="raiz reveal">
+        <div class="raiz__icon">
+          <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5">
+            <ellipse cx="21" cy="21" rx="14" ry="7" fill="currentColor" opacity="0.2"/>
+            <ellipse cx="21" cy="21" rx="14" ry="7"/>
+            <circle cx="15" cy="21" r="1.5" fill="currentColor"/>
+            <path d="M33 18 L38 15 L38 27 L33 24" fill="currentColor" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="raiz__name">Pescado fresco</div>
+        <p class="raiz__desc">Pargo, sierra, gualajo, bagre. Del río y del mar, siempre del día.</p>
+      </div>
+      <div class="raiz reveal">
+        <div class="raiz__icon">
+          <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="21" cy="24" r="10" fill="currentColor" opacity="0.2"/>
+            <circle cx="21" cy="24" r="10"/>
+            <path d="M21 14 Q23 8 21 4 Q19 8 21 14" fill="currentColor"/>
+            <circle cx="18" cy="22" r="1.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="raiz__name">Chontaduro</div>
+        <p class="raiz__desc">Fruto de palma del Pacífico. Se come con sal o en flan. Alimento sagrado.</p>
+      </div>
+      <div class="raiz reveal">
+        <div class="raiz__icon">
+          <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 12 Q21 6 30 12 L30 30 Q21 36 12 30 Z"/>
+            <path d="M16 16 L16 26 M20 14 L20 28 M24 14 L24 28 M28 16 L28 26" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="raiz__name">Hoja de plátano</div>
+        <p class="raiz__desc">Empaque, cocción y aroma. La hoja cocina tanto como el fogón.</p>
+      </div>
+      <div class="raiz reveal">
+        <div class="raiz__icon">
+          <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 6 Q25 14 21 22 Q17 14 21 6" fill="currentColor" opacity="0.3"/>
+            <path d="M21 6 Q25 14 21 22 Q17 14 21 6"/>
+            <path d="M21 22 L21 36" stroke-linecap="round"/>
+            <path d="M14 28 L21 30 L28 28" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="raiz__name">Hierbas de azotea</div>
+        <p class="raiz__desc">Poleo, cimarrón, orégano de azotea. Perfuman cada caldo y tapao.</p>
+      </div>
+      <div class="raiz reveal">
+        <div class="raiz__icon">
+          <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M10 28 L10 18 Q10 14 14 14 L28 14 Q32 14 32 18 L32 28" fill="currentColor" opacity="0.2"/>
+            <path d="M10 28 L10 18 Q10 14 14 14 L28 14 Q32 14 32 18 L32 28"/>
+            <path d="M16 14 L16 8 Q16 6 18 6 Q20 6 20 8 L20 14 M22 14 L22 10 Q22 8 24 8 Q26 8 26 10 L26 14" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="raiz__name">Viche</div>
+        <p class="raiz__desc">Destilado ancestral de caña. Medicina, fiesta y corazón del Pacífico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA ============ -->
+<section class="galeria" id="galeria">
+  <div class="container">
+    <div class="galeria__header reveal">
+      <div class="section-kicker">Nuestro lugar</div>
+      <h2 class="section-title">La <em>casa</em> por dentro</h2>
+    </div>
+    <div class="galeria__grid reveal">
+      <div class="galeria__item galeria__item--tall"><img src="./assets/ambiente-03.jpg" alt="Plato del Pacífico" loading="lazy"></div>
+      <div class="galeria__item"><img src="./assets/ambiente-01.jpg" alt="Patacones con limonada" loading="lazy"></div>
+      <div class="galeria__item"><img src="./assets/ambiente-02.jpg" alt="Plato sobre hoja de plátano" loading="lazy"></div>
+      <div class="galeria__item galeria__item--wide"><img src="./assets/ambiente-04.jpg" alt="Cocina tradicional" loading="lazy"></div>
+      <div class="galeria__item"><img src="./assets/ambiente-05.jpg" alt="Presentación del plato" loading="lazy"></div>
+      <div class="galeria__item"><img src="./assets/ambiente-06.jpg" alt="Plato servido" loading="lazy"></div>
+      <div class="galeria__item galeria__item--tall"><img src="./assets/plato-05.jpeg" alt="Sopa tradicional" loading="lazy"></div>
+      <div class="galeria__item"><img src="./assets/plato-01.jpeg" alt="Camarones apanados" loading="lazy"></div>
+      <div class="galeria__item"><img src="./assets/plato-07.jpeg" alt="Empanadas de plátano" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISITA ============ -->
+<section class="visita pattern-dark" id="visita">
+  <div class="pattern-bg"></div>
+  <div class="visita__sun" aria-hidden="true"></div>
+  <div class="container">
+    <div class="visita__grid">
+      <div class="reveal">
+        <div class="section-kicker" style="color: var(--naranja);">Visítanos o escríbenos</div>
+        <h2 class="visita__title">Ven a <em>la mesa</em>.</h2>
+        <p class="visita__lead">
+          No necesitas reserva — pero si querés asegurar mesa en el fin de semana, o hacer un pedido para
+          llevar, escribinos por WhatsApp. Te contestamos rápido.
+        </p>
+
+        <div class="visita__info">
+          <div class="visita__row">
+            <div class="visita__row-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            </div>
+            <div>
+              <div class="visita__row-label">WhatsApp — pedidos y reservas</div>
+              <div class="visita__row-value"><a href="https://wa.me/573182789391" target="_blank" rel="noopener">318 278 9391</a></div>
+            </div>
+          </div>
+
+          <div class="visita__row">
+            <div class="visita__row-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="visita__row-label">Horario</div>
+              <div class="visita__row-value">
+                Martes a domingo<br>
+                11:00 a.m. — 9:00 p.m.
+              </div>
+            </div>
+          </div>
+
+          <div class="visita__row">
+            <div class="visita__row-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="visita__row-label">Dirección</div>
+              <div class="visita__row-value">
+                (dirección por confirmar)<br>
+                <span style="font-size: 13px; font-family: var(--font-body); color: var(--arena); font-weight: 300; letter-spacing: 0;">Escríbenos por WhatsApp para ubicarte.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20reservar%20una%20mesa" target="_blank" rel="noopener" class="visita__cta">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+          escribir a orfa
+        </a>
+      </div>
+
+      <div class="visita__aside reveal">
+        <div class="visita__aside-photo">
+          <img src="./assets/ambiente-04.jpg" alt="Plato del Pacífico servido" loading="lazy">
+        </div>
+        <div class="visita__aside-note">
+          "En mi cocina no se pide, se siente. Venga con hambre y con tiempo — el fogón no corre."
+          <br><strong style="display: block; margin-top: 8px; font-family: var(--font-display); font-style: normal; font-size: 18px; color: var(--naranja);">— Orfa</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+      <div class="footer__brand">La Cocina de Orfa<em>De la raiz al corazon</em></div>
+        <p class="footer__text">
+          Cocina afro-pacífica colombiana. Encocados, tapaos, pescado en hoja de plátano, arroz con coco
+          y viche. Hecho a mano, con tiempo, como se hacía en casa.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer__heading">Explorá</div>
+        <ul class="footer__list">
+          <li><a href="#orfa">quiénes somos</a></li>
+          <li><a href="#menu">menú</a></li>
+          <li><a href="#raices">raíces del pacífico</a></li>
+          <li><a href="#galeria">galería</a></li>
+          <li><a href="#visita">visítanos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer__heading">Contacto</div>
+        <ul class="footer__list">
+          <li><a href="https://wa.me/573182789391" target="_blank" rel="noopener">WhatsApp · 318 278 9391</a></li>
+          <li><a href="#visita">Horario y dirección</a></li>
+        </ul>
+        <div class="footer__heading" style="margin-top: 24px;">Seguinos</div>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5c0-1.2.4-2 2-2h2V2h-3c-2.8 0-5 1.7-5 5v3H5v4h4v8h4z"/></svg>
+          </a>
+          <a href="https://wa.me/573182789391" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span id="year"></span> · La Cocina de Orfa · Cali · Colombia</span>
+      <span>Afro-pacífico · de la raiz al corazon</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/573182789391?text=Hola%20Orfa%2C%20quiero%20hacer%20un%20pedido" class="wa-float" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M20.52 3.48A11.86 11.86 0 0 0 12.04 0C5.47 0 .13 5.34.13 11.91c0 2.1.55 4.15 1.59 5.96L0 24l6.28-1.65a11.88 11.88 0 0 0 5.76 1.47h.01c6.57 0 11.92-5.34 11.92-11.92 0-3.19-1.24-6.19-3.49-8.45zm-8.48 18.34h-.01a9.9 9.9 0 0 1-5.03-1.38l-.36-.21-3.74.98.99-3.64-.24-.37a9.88 9.88 0 0 1-1.51-5.3c0-5.47 4.45-9.92 9.91-9.92 2.65 0 5.13 1.03 7 2.9a9.84 9.84 0 0 1 2.9 7.01c0 5.47-4.45 9.93-9.91 9.93zm5.43-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.47 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>
+  </svg>
+</a>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenu = document.getElementById('closeMenu');
+  burger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  document.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // Menu filtering
+  const tabs = document.querySelectorAll('.menu__tab');
+  const dishes = document.querySelectorAll('.dish');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const cat = tab.dataset.cat;
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      dishes.forEach(d => {
+        if (cat === 'todos' || d.dataset.cat === cat) d.hidden = false;
+        else d.hidden = true;
+      });
+    });
+  });
+
+  // Reveal on scroll
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
