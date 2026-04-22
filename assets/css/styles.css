@@ -137,6 +137,7 @@
       width: 44px; height: 44px;
       object-fit: contain;
       flex-shrink: 0;
+      border-radius: 50%;
     }
     .nav__brand-text { line-height: 1; letter-spacing: 0.04em; }
     .nav__brand-text span {
@@ -394,6 +395,7 @@
       height: 100%;
       object-fit: contain;
       transform: scale(1.08);
+      border-radius: 50%;
     }
 
     .hero__scroll {
