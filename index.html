@@ -13,21 +13,17 @@
   <meta name="googlebot" content="index, follow, noarchive">
 
   <!-- ================= SECURITY HEADERS (OWASP Top 10 mitigations) =================
-       Estas cabeceras se inyectan vía <meta http-equiv> porque el hosting es
-       estático y no podemos configurar headers HTTP reales. Si en el futuro
-       se sirve con un reverse proxy (Cloudflare, Nginx), estas mismas deben
-       aplicarse como cabeceras HTTP reales — son más fuertes ahí.
-
-       - Content-Security-Policy: A03 Injection / A05 Misconfig.
-         Solo permite recursos del propio origen + data URIs para imágenes
-         (el patrón SVG del fondo usa data:). Bloquea inline scripts/styles
-         (no tenemos) y cualquier CDN externo.
-       - Referrer-Policy: A01 Access Control / fuga de info. Limita el
-         referer enviado a dominios externos (wa.me, etc.).
-       - X-Content-Type-Options: A05. Evita MIME-sniffing del navegador.
+       La CSP completa se aplica como cabecera HTTP real desde _headers
+       (Netlify / Cloudflare Pages). NO se inyecta aquí via <meta> porque:
+         - Bajo file:// (preview local) el token 'self' no resuelve a ningún
+           origen y rompe imágenes/fuentes/estilos relativos.
+         - Sobre GitHub Pages tampoco podemos controlar cabeceras HTTP, así
+           que la CSP real solo vive si se despliega en una plataforma que
+           respete _headers.
+       Lo que sí se deja aquí son las metas que no dependen del esquema:
+         - Referrer-Policy: limita el referer a dominios externos (wa.me).
+         - X-Content-Type-Options: evita MIME-sniffing del navegador.
   ================================================================================= -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
