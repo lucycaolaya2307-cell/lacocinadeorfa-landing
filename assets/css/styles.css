@@ -112,6 +112,9 @@
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 18px 0;
+      background: linear-gradient(180deg, rgba(59, 19, 14, 0.3) 0%, rgba(59, 19, 14, 0.18) 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       transition: all 0.4s var(--ease-smooth);
     }
     .nav.scrolled {
@@ -123,7 +126,14 @@
     }
     .nav__inner {
       display: flex; align-items: center; justify-content: space-between;
-      gap: 24px;
+      gap: 16px;
+    }
+    @media (min-width: 900px) {
+      .nav__inner {
+        display: grid;
+        grid-template-columns: auto auto 1fr auto;
+        gap: 18px;
+      }
     }
     .nav__brand {
       display: inline-flex; align-items: center; justify-content: center;
@@ -147,20 +157,33 @@
 
     .nav__links {
       display: none;
-      gap: 32px;
-      font-size: 14px;
-      letter-spacing: 0.1em;
+      align-items: center;
+      gap: 28px;
+      font-size: 15px;
+      letter-spacing: 0.08em;
       text-transform: lowercase;
     }
-    @media (min-width: 900px) { .nav__links { display: flex; } }
+    @media (min-width: 900px) {
+      .nav__links {
+        display: flex;
+        justify-self: start;
+        padding-left: 6px;
+      }
+    }
     .nav__links a {
-      color: var(--hueso);
-      opacity: 0.9;
+      color: rgba(250, 242, 224, 0.98);
+      opacity: 1;
+      font-weight: 600;
+      text-shadow: 0 1px 12px rgba(26, 8, 6, 0.24);
       transition: all 0.25s;
       position: relative;
       padding: 6px 0;
     }
-    .nav.scrolled .nav__links a { color: var(--marron); opacity: 0.75; }
+    .nav.scrolled .nav__links a {
+      color: var(--marron);
+      opacity: 0.9;
+      text-shadow: none;
+    }
     .nav__links a::after {
       content: ''; position: absolute; bottom: 0; left: 0; right: 0;
       height: 1px; background: currentColor; transform: scaleX(0);
@@ -172,13 +195,15 @@
     .nav__cta {
       display: none;
       align-items: center; gap: 8px;
-      padding: 11px 20px;
+      padding: 12px 22px;
       background: var(--naranja);
       color: var(--marron);
       font-size: 13px;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: lowercase;
       border-radius: 999px;
+      box-shadow: 0 12px 24px rgba(26, 8, 6, 0.16);
       transition: all 0.25s;
     }
     @media (min-width: 700px) { .nav__cta { display: inline-flex; } }
